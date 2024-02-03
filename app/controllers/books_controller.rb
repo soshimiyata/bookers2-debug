@@ -11,7 +11,6 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
-    @bookf = Book.find(params[:book_id])
   end
 
   def create

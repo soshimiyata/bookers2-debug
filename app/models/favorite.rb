@@ -1,6 +1,10 @@
 class Favorite < ApplicationRecord
+  has_many :favorites, dependent: :destroy
   belongs_to :user
   belongs_to :book
-  
-  validates :user_id, uniqueness: {scope: :book_id} 
+   has_many :favorites, dependent: :destroy
+   
+  def favorited_by?(user)
+  favorites.exists?(user_id: user.id)
+  end
 end
