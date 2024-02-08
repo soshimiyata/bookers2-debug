@@ -19,14 +19,16 @@
           <td><%= @book.body %></td>
           <td id="favorite_btn_<%= @book.id %>">
              <%= render "favorites/btn", book: @book %></td>
-          <td>コメント数：<%= @book.book_comments.count %></td>
+          <td id="comment_counter">
+            コメント数：<%= @book.book_comments.count %>
+            </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
-      <div>
+      <div id="comment_index">
         <% @book.book_comments.each do |book_comment| %>
           <p><%= image_tag book_comment.user.get_profile_image, size:"100x100" %></p>
           <%= book_comment.user.name %>
