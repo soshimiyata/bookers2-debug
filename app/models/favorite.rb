@@ -1,9 +1,7 @@
 class Favorite < ApplicationRecord
-  has_many :favorites, dependent: :destroy
   belongs_to :user
   belongs_to :book
-   has_many :favorites, dependent: :destroy
-   
+
   def favorited_by?(user)
   favorites.exists?(user_id: user.id)
   end
